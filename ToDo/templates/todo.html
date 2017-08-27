@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> ToDO List </title>
+		<!-- CSS Lib -->
+		<link rel = "stylesheet" href = "../node_modules/bootstrap/dist/css/bootstrap.css" type ="text/css " />
+		<link rel = "stylesheet" href = "../css/custom.css" type ="text/css" />
+		
+		<!-- Js Lib -->
+	    <script type = "text/javascript" src= "../node_modules/jquery/dist/jquery.min.js"></script>
+	    <script type = "text/javascript" src= "../node_modules/angular/angular.min.js"></script>
+	    <script type = "text/javascript" src= "../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	    <script type = "text/javascript" src= "../node_modules/angular-route/angular-route.min.js"></script>
+		<script type = "text/javascript" src= "../controllers/todoController.js"></script>
+		<!-- <script type = "text/javascript" src= "app.js"></script> -->
+	</head>
+	<body ng-app ="ToDo" class ="margin-40px">
+		<div ng-controller = "todoController as todoCtrl">
+			{{todoCtrl.remaining()}} of {{todoCtrl.toDoLength()}} remaining [<a href = "" ng-click = "todoCtrl.archieve()"> Archieve </a>]
+			<div ng-repeat = "todo in todoCtrl.todoData">
+					<input type ="checkbox" ng-model = "todo.done" /> <span class = "done-{{todo.done}}">{{todo.data}}</span> 
+			</div>
+			
+			<form>
+				<input type ="text" ng-model = "todoCtrl.todoText" placeholder = "Write your task here" />
+				<input type = "button" value = "Add" ng-click = "todoCtrl.addTodo()" />
+			</form>
+		</div>
+	</body>
+</html>
